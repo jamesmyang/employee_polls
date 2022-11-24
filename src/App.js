@@ -6,26 +6,28 @@ import {
   Redirect,
 } from 'react-router-dom'
 
-import { Navbar } from './app/Navbar'
+import { Navbar } from './app/Navbar';
+import { LoginPage } from './features/authentication/LoginPage';
 
 function App() {
+  const isLoggedIn = false;
   return (
     <Router>
-      <Navbar />
-      <div className="App">
+      {!isLoggedIn ? (
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() => (
-              <section>
-                <h2>Welcome to the Redux Essentials example app!</h2>
-              </section>
-            )}
-          />
-          <Redirect to="/" />
+          <Route path="/login" component={LoginPage} />
+          <Redirect to="/login" />
         </Switch>
-      </div>
+      ) : (
+        <div>
+          <Navbar />
+          <div className="App">
+            <Switch>
+              <Redirect to="/" />
+            </Switch>
+          </div>
+        </div>
+      )}
     </Router>
   )
 }
