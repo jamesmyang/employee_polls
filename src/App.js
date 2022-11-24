@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import {
   BrowserRouter as Router,
   Switch,
@@ -7,10 +8,12 @@ import {
 } from 'react-router-dom'
 
 import { Navbar } from './app/Navbar';
-import { LoginPage } from './features/authentication/LoginPage';
+import { LoginPage } from './features/users/LoginPage';
 
 function App() {
-  const isLoggedIn = false;
+  const userId = useSelector(state => state.users.auth.userId)
+  const isLoggedIn = Boolean(userId);
+
   return (
     <Router>
       {!isLoggedIn ? (

@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
+import { logout } from '../features/users/usersSlice'
+
 export const Navbar = () => {
+
+  const dispatch = useDispatch()
+
+  const logOut = useCallback(() => {
+    dispatch(logout());
+  }, [dispatch]);
+
   return (
     <nav>
       <section>
@@ -16,7 +26,7 @@ export const Navbar = () => {
 
           <div className="navLinks">
             <Link to="/" >User</Link>
-            <Link to="/" >Logout</Link>
+            <Link to="/" onClick={logOut}>Logout</Link>
           </div>
         </div>
       </section>

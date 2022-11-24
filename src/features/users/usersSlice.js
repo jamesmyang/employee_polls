@@ -3,7 +3,12 @@ import { _getUsers } from '../../api/_DATA'
 
 const usersAdapter = createEntityAdapter()
 
-const initialState = usersAdapter.getInitialState()
+const initialState = usersAdapter.getInitialState({
+  auth: {
+    userId: null,
+    error: null
+  }
+})
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   const users = await _getUsers()
@@ -13,16 +18,43 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
 const usersSlice = createSlice({
   name: 'users',
   initialState,
-  reducers: {},
+  reducers: {
+    login(state, action) {
+      const { userId, password } = action.payload
+      console.log("userId: " + userId + ", password: " + password)
+      const foundUser = state.entities[userId]
+      console.log("foundUser: " + foundUser)
+      if (foundUser) {
+        const foundUserPassword = foundUser.password
+        if (foundUserPassword === password) {
+          state.auth.userId = userId
+          state.auth.error = null
+        } else {
+          state.auth.userId = null
+          state.auth.error = "User's password not match (hint: " + foundUserPassword + ")"
+        }
+      } else {
+        state.auth.userId = null
+        state.auth.error = "User not found for " + userId
+      }
+    },
+    logout(state, action) {
+      console.log("logoutinggggggggggggggggggggg")
+      state.auth.userId = null
+      state.auth.error = null
+    }
+  },
   extraReducers(builder) {
     builder.addCase(fetchUsers.fulfilled, usersAdapter.setAll)
   }
 })
 
+export const { login, logout } = usersSlice.actions
+
 export default usersSlice.reducer
 
 export const {
   selectAll: selectAllUsers,
-  selectIds: selectAllUsersIds,
+  selectIds: selectUserIds,
   selectById: selectUserById
 } = usersAdapter.getSelectors(state => state.users)
