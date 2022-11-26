@@ -1,5 +1,5 @@
 :root {
-  --redux-color: #764abc;
+  --redux-color: #0f2b3d;
 }
 
 body {
@@ -34,7 +34,7 @@ nav section {
 
 nav section h1,
 nav section {
-  color: white;
+  color: #0998c3;
 }
 
 nav a,
@@ -43,7 +43,7 @@ nav a:active {
   padding: 0.25rem 1.5rem;
   border-radius: 4px;
   color: white !important;
-  background: #481499;
+  background: #0998c3;
 }
 
 nav a:first-of-type {
@@ -52,7 +52,7 @@ nav a:first-of-type {
 
 nav a:hover {
   color: white;
-  background: #926bcf;
+  background: #6af668;
 }
 
 .navContent {
@@ -249,26 +249,6 @@ button.reaction-button {
   }
 }
 
-/* Notifications list */
-
-.notification {
-  border: 1px solid #eee;
-  padding: 0.5rem;
-}
-
-.notificationsList .notification+.notification {
-  border-top: none;
-}
-
-.notification.new {
-  background-color: rgba(29, 161, 242, 0.1);
-}
-
-
-
-
-
-
 
 
 
@@ -286,4 +266,78 @@ section {
 
 .center {
   text-align: center;
+}
+
+.questions-container {
+  padding: 10px;
+}
+
+.questions-panel {
+  display: block;
+  padding: 0px;
+  text-align: center;
+  background-color: #ffffff;
+  color: white;
+  border: solid 1px darkgrey;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 85%;
+  border-radius: 4px;
+}
+
+.questions-title {
+  color: black;
+  font-size: 1.5rem;
+  padding: 10px;
+  border-bottom: solid 1px darkgrey;
+}
+
+.questions-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.question-box {
+  border: solid 1px darkgrey;
+  width: 330px;
+  margin: 10px;
+  border-radius: 4px;
+
+}
+
+.question {
+  border-bottom: solid 1px darkgrey;
+  padding: 10px;
+
+}
+
+.question-author {
+  color: black;
+
+
+  text-align: center;
+  line-height: 25px;
+  font-size: 20px;
+}
+
+.question-timestamp {
+  color: grey;
+
+
+  text-align: center;
+
+}
+
+.question-button {
+  color: black;
+  width: 90%;
+  margin: auto;
+  border: solid 2px rgb(44, 239, 135);
+  border-radius: 8px;
+  text-align: center;
+
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }

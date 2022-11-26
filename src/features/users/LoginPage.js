@@ -10,8 +10,8 @@ export const LoginPage = () => {
   const authUserId = useSelector(state => state.users.auth.userId)
   const error = useSelector(state => state.users.auth.error)
 
-  const [userId, setUserId] = useState(authUserId)
-  const [password, setPassword] = useState('')
+  const [userId, setUserId] = useState(authUserId ? authUserId : 'zoshikanlu')
+  const [password, setPassword] = useState('pass246')
 
   const canSubmit = Boolean(userId) && Boolean(password)
 
@@ -21,6 +21,16 @@ export const LoginPage = () => {
   const onPasswordChanged = e => setPassword(e.target.value)
 
   const onSubmitClicked = () => {
+    submit()
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    submit()
+  }
+
+  const submit = () => {
     if (canSubmit) {
       dispatch(login({ userId, password }))
 
@@ -42,7 +52,7 @@ export const LoginPage = () => {
       <img src="/employeepolls.png" alt="EmployeePolls Logo" />
       <h4 >Log in</h4>
       {renderedError()}
-      <form>
+      <form onSubmit={handleSubmit}>
         <label htmlFor="userId">User</label>
         <select
           id="userId"

@@ -21,9 +21,7 @@ const usersSlice = createSlice({
   reducers: {
     login(state, action) {
       const { userId, password } = action.payload
-      console.log("userId: " + userId + ", password: " + password)
       const foundUser = state.entities[userId]
-      console.log("foundUser: " + foundUser)
       if (foundUser) {
         const foundUserPassword = foundUser.password
         if (foundUserPassword === password) {
@@ -39,7 +37,6 @@ const usersSlice = createSlice({
       }
     },
     logout(state, action) {
-      console.log("logoutinggggggggggggggggggggg")
       state.auth.userId = null
       state.auth.error = null
     }

@@ -7,18 +7,21 @@ import {
   Redirect,
 } from 'react-router-dom'
 
-import { Navbar } from './app/Navbar';
-import { LoginPage } from './features/users/LoginPage';
+import { Navbar } from './app/Navbar'
+import { LoginPage } from './features/users/LoginPage'
+import { QuestionsPage } from './features/questions/QuestionsPage'
 
 function App() {
   const userId = useSelector(state => state.users.auth.userId)
-  const isLoggedIn = Boolean(userId);
+  const isLoggedIn = Boolean(userId)
 
   return (
     <Router>
       {!isLoggedIn ? (
         <Switch>
-          <Route path="/login" component={LoginPage} />
+          <Route
+            path="/login"
+            component={LoginPage} />
           <Redirect to="/login" />
         </Switch>
       ) : (
@@ -26,6 +29,10 @@ function App() {
           <Navbar />
           <div className="App">
             <Switch>
+              <Route
+                exact
+                path="/"
+                component={QuestionsPage} />
               <Redirect to="/" />
             </Switch>
           </div>
