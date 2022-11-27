@@ -1,22 +1,28 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 
-export const QuestionsList = () => {
 
-  return (
-    <div className='questions-list'>
+export const QuestionsList = ({ questions }) => {
 
-      <div className='question-box'>
+  //const time = 
+
+  const renderedQuestions = () => {
+    if (!questions) {
+      return <div className='question-timestamp'>loading</div>
+    }
+
+    return questions.map(question => (
+      <div className='question-box' key={question.id}>
         <div className='question'>
-          <div className='question-author'>JamesYang</div>
-          <div className='question-timestamp'>11/22/2022</div>
+          <div className='question-author'>{question.author}</div>
+          <div className='question-timestamp'>{new Date(question.timestamp).toLocaleDateString()}</div>
         </div>
         <div className='question-button'>Show</div>
       </div>
+    ))
+  }
 
-
-
+  return (
+    <div className='questions-list'>
+      {renderedQuestions()}
     </div>
-
   )
 }

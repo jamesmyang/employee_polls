@@ -1,5 +1,5 @@
 
-import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } from '@reduxjs/toolkit'
 import { _getQuestions } from '../../api/_DATA'
 
 const questionsAdapter = createEntityAdapter()
@@ -7,11 +7,9 @@ const questionsAdapter = createEntityAdapter()
 const initialState = questionsAdapter.getInitialState()
 
 export const fetchQuestions = createAsyncThunk('questions/fetchQuestions', async () => {
-  console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq")
   const questions = await _getQuestions()
   return questions
 })
-
 
 const questionsSlice = createSlice({
   name: 'questions',
@@ -19,7 +17,7 @@ const questionsSlice = createSlice({
   reducers: {
   },
   extraReducers(builder) {
-    builder.addCase(fetchQuestions.fulfilled, questionsAdapter.setAll)
+    builder.addCase(fetchQuestions.fulfilled, questionsAdapter.upsertMany)
   }
 })
 
@@ -30,3 +28,13 @@ export const {
   selectIds: selectQuestionIds,
   selectById: selectQuestionById
 } = questionsAdapter.getSelectors(state => state.questions)
+
+export const selectNewQuestionsByUser = createSelector(
+  [selectAllQuestions, (state, userId) => userId],
+  (questions, userId) => questions.filter(question => !question.optionOne.votes.includes(userId) && !question.optionTwo.votes.includes(userId))
+)
+
+export const selectDoneQuestionsByUser = createSelector(
+  [selectAllQuestions, (state, userId) => userId],
+  (questions, userId) => questions.filter(question => question.optionOne.votes.includes(userId) || question.optionTwo.votes.includes(userId))
+)
