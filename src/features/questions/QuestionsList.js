@@ -1,4 +1,4 @@
-
+import { Link } from 'react-router-dom';
 
 export const QuestionsList = ({ questions }) => {
 
@@ -6,7 +6,7 @@ export const QuestionsList = ({ questions }) => {
 
   const renderedQuestions = () => {
     if (!questions) {
-      return <div className='question-timestamp'>loading</div>
+      return <div className='loading'>loading</div>
     }
 
     return questions.map(question => (
@@ -15,7 +15,11 @@ export const QuestionsList = ({ questions }) => {
           <div className='question-author'>{question.author}</div>
           <div className='question-timestamp'>{new Date(question.timestamp).toLocaleDateString()}</div>
         </div>
-        <div className='question-button'>Show</div>
+        <div className='question-button'>
+          <Link to={`/questions/${question.id}`} >
+            Show
+          </Link>
+        </div>
       </div>
     ))
   }

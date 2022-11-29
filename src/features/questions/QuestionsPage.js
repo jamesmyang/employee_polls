@@ -23,12 +23,16 @@ export const QuestionsPage = () => {
     <div className='questions-container'>
       <div className='questions-panel'>
         <div className='questions-title'>New Questions</div>
-        <QuestionsList questions={newQuestions} />
+        <div className='questions-list'>
+          <QuestionsList questions={newQuestions} />
+        </div>
       </div>
 
       <div className='questions-panel'>
         <div className='questions-title'>Done</div>
-        <QuestionsList questions={doneQuestions} />
+        <div className='questions-list'>
+          <QuestionsList questions={doneQuestions} />
+        </div>
       </div>
     </div >
   )

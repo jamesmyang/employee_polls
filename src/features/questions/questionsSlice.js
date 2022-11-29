@@ -1,6 +1,6 @@
 
 import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } from '@reduxjs/toolkit'
-import { _getQuestions } from '../../api/_DATA'
+import { _getQuestions, _saveQuestionAnswer } from '../../api/_DATA'
 
 const questionsAdapter = createEntityAdapter()
 
@@ -11,6 +11,11 @@ export const fetchQuestions = createAsyncThunk('questions/fetchQuestions', async
   return questions
 })
 
+export const updateQuestion = createAsyncThunk('questions/updateQuestion', async ({ authedUser, qid, answer }) => {
+  const result = await _saveQuestionAnswer({ authedUser, qid, answer })
+  return { authedUser, qid, answer }
+})
+
 const questionsSlice = createSlice({
   name: 'questions',
   initialState,
@@ -18,6 +23,8 @@ const questionsSlice = createSlice({
   },
   extraReducers(builder) {
     builder.addCase(fetchQuestions.fulfilled, questionsAdapter.upsertMany)
+    builder.addCase(updateQuestion.fulfilled, (state, action) => {
+    })
   }
 })
 

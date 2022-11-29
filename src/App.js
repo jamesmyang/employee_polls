@@ -10,6 +10,7 @@ import {
 import { Navbar } from './app/Navbar'
 import { LoginPage } from './features/users/LoginPage'
 import { QuestionsPage } from './features/questions/QuestionsPage'
+import { SingleQuestionPage } from './features/questions/SingleQuestionPage'
 
 function App() {
   const userId = useSelector(state => state.users.auth.userId)
@@ -33,6 +34,10 @@ function App() {
                 exact
                 path="/"
                 component={QuestionsPage} />
+              <Route
+                exact
+                path="/questions/:questionId"
+                component={SingleQuestionPage} />
               <Redirect to="/" />
             </Switch>
           </div>
