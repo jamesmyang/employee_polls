@@ -5,10 +5,10 @@ import { selectQuestionById, updateQuestion } from './questionsSlice'
 import { selectUserById } from '../../features/users/usersSlice'
 
 export const SingleQuestionPage = ({ match }) => {
-  const { questionId } = match.params
+  const { question_id } = match.params
 
   const authUserId = useSelector(state => state.users.auth.userId)
-  const question = useSelector(state => selectQuestionById(state, questionId))
+  const question = useSelector(state => selectQuestionById(state, question_id))
   const authorUser = useSelector(state => selectUserById(state, question.author))
 
   const [answeredOne, setAnsweredOne] = useState(question.optionOne.votes.includes(authUserId))
@@ -17,7 +17,7 @@ export const SingleQuestionPage = ({ match }) => {
   const dispatch = useDispatch()
 
   const handleClicked = (option) => {
-    dispatch(updateQuestion({ authedUser: authUserId, qid: questionId, answer: option }))
+    dispatch(updateQuestion({ authedUser: authUserId, qid: question_id, answer: option }))
     if (option === "optionOne") {
       setAnsweredOne(true)
     }

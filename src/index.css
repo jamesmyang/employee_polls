@@ -410,3 +410,34 @@ section {
 
   font-size: 14px;
 }
+
+.question-form-panel {
+  display: block;
+  padding: 0px;
+  text-align: center;
+  background-color: #ffffff;
+  color: white;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 65%;
+}
+
+.question-form {
+
+  justify-content: center;
+}
+
+.question-poll {
+  color: black;
+  font-size: 0.9rem;
+  padding: 0px;
+}
+
+.question-label {
+  color: black;
+}
+
+.question-option {
+  width: 100%;
+}

@@ -1,8 +1,10 @@
 
 import { createSlice, createAsyncThunk, createEntityAdapter, createSelector } from '@reduxjs/toolkit'
-import { _getQuestions, _saveQuestionAnswer } from '../../api/_DATA'
+import { _getQuestions, _saveQuestionAnswer, _saveQuestion } from '../../api/_DATA'
 
-const questionsAdapter = createEntityAdapter()
+const questionsAdapter = createEntityAdapter({
+  sortComparer: (a, b) => b.timestamp - a.timestamp
+})
 
 const initialState = questionsAdapter.getInitialState()
 
@@ -13,7 +15,13 @@ export const fetchQuestions = createAsyncThunk('questions/fetchQuestions', async
 
 export const updateQuestion = createAsyncThunk('questions/updateQuestion', async ({ authedUser, qid, answer }) => {
   const result = await _saveQuestionAnswer({ authedUser, qid, answer })
-  return { authedUser, qid, answer }
+  return result
+})
+
+export const createQuestion = createAsyncThunk('questions/createQuestion', async (initialQuestion) => {
+  const result = await _saveQuestion(initialQuestion)
+  console.log("cccccccccccccccccccccccccccccccccccccccccccccccccc")
+  return result
 })
 
 const questionsSlice = createSlice({
@@ -25,6 +33,7 @@ const questionsSlice = createSlice({
     builder.addCase(fetchQuestions.fulfilled, questionsAdapter.upsertMany)
     builder.addCase(updateQuestion.fulfilled, (state, action) => {
     })
+    builder.addCase(createQuestion.fulfilled, questionsAdapter.addOne)
   }
 })
 
