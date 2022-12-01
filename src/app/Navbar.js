@@ -22,8 +22,8 @@ export const Navbar = () => {
         <div className="navContent">
           <div className="navLinks">
             <Link to="/" >Home</Link>
-            <Link to="/" >Leaderboard</Link>
-            <Link to="/newpoll" >New</Link>
+            <Link to="/leaderboard" >Leaderboard</Link>
+            <Link to="/add" >New</Link>
           </div>
 
           <div className="navLinks">

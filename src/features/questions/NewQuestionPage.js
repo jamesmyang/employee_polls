@@ -34,7 +34,7 @@ export const NewQuestionPage = () => {
   const submit = async () => {
     if (canSubmit) {
       try {
-        setAddRequestStatus('pending');
+        //setAddRequestStatus('pending');
         await dispatch(createQuestion({ optionOneText: firstOption, optionTwoText: secondOption, author: authUserId })).unwrap();
         console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
         setFirstOption('')
@@ -44,7 +44,7 @@ export const NewQuestionPage = () => {
       } catch (err) {
         console.error('Failed to save the poll: ', err);
       } finally {
-        setAddRequestStatus('idle');
+        //setAddRequestStatus('idle');
       }
     }
   }

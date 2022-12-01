@@ -42,7 +42,7 @@ const usersSlice = createSlice({
     }
   },
   extraReducers(builder) {
-    builder.addCase(fetchUsers.fulfilled, usersAdapter.setAll)
+    builder.addCase(fetchUsers.fulfilled, usersAdapter.upsertMany)
   }
 })
 

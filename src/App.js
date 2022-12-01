@@ -9,9 +9,12 @@ import {
 
 import { Navbar } from './app/Navbar'
 import { LoginPage } from './features/users/LoginPage'
+import { LeaderBoardPage } from './features/users/LeaderBoardPage'
 import { QuestionsPage } from './features/questions/QuestionsPage'
 import { SingleQuestionPage } from './features/questions/SingleQuestionPage'
 import { NewQuestionPage } from './features/questions/NewQuestionPage'
+
+
 
 function App() {
   const userId = useSelector(state => state.users.auth.userId)
@@ -41,8 +44,12 @@ function App() {
                 component={SingleQuestionPage} />
               <Route
                 exact
-                path="/newpoll"
+                path="/add"
                 component={NewQuestionPage} />
+              <Route
+                exact
+                path="/leaderboard"
+                component={LeaderBoardPage} />
               <Redirect to="/" />
             </Switch>
           </div>

@@ -441,3 +441,55 @@ section {
 .question-option {
   width: 100%;
 }
+
+.leaderboard-panel {
+  display: block;
+  padding: 0px;
+  text-align: center;
+  background-color: #ffffff;
+  color: white;
+
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 70%;
+  border-radius: 4px;
+}
+
+.leaderboard-table {
+  color: black;
+
+}
+
+.leaderboard-table-head {
+  color: darkgrey;
+  border: 1px solid darkgrey;
+}
+
+.leaderboard-table-data {
+  color: black;
+  border: 1px solid darkgrey;
+  font-weight: bold;
+}
+
+.leaderboard-table-data-name {
+  font-weight: bold;
+}
+
+.leaderboard-table-data-id {
+  color: darkgrey;
+  font-weight: normal;
+}
+
+.leaderboard-table-data-number {
+  color: darkgrey;
+  font-weight: normal;
+}
+
+.leaderboard-table-width_25 {
+  width: 21%;
+}
+
+.leaderboard-table-width_50 {
+  width: 58%;
+}
