@@ -9,12 +9,12 @@ export const NewQuestionPage = () => {
 
   const authUserId = useSelector(state => state.users.auth.userId)
 
-  const [addRequestStatus, setAddRequestStatus] = useState('idle');
+  //const [addRequestStatus, setAddRequestStatus] = useState('idle');
 
   const [firstOption, setFirstOption] = useState('')
   const [secondOption, setSecondOption] = useState('')
 
-  const canSubmit = Boolean(firstOption) && Boolean(secondOption) && addRequestStatus === 'idle'
+  const canSubmit = Boolean(firstOption) && Boolean(secondOption) //&& addRequestStatus === 'idle'
 
   const onFirstOptionChanged = e => setFirstOption(e.target.value)
   const onSecondOptionChanged = e => setSecondOption(e.target.value)
@@ -36,7 +36,6 @@ export const NewQuestionPage = () => {
       try {
         //setAddRequestStatus('pending');
         await dispatch(createQuestion({ optionOneText: firstOption, optionTwoText: secondOption, author: authUserId })).unwrap();
-        console.log("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
         setFirstOption('')
         setSecondOption('')
 
