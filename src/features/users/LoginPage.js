@@ -10,8 +10,11 @@ export const LoginPage = () => {
   const authUserId = useSelector(state => state.users.auth.userId)
   const error = useSelector(state => state.users.auth.error)
 
-  const [userId, setUserId] = useState(authUserId ? authUserId : 'zoshikanlu')
-  const [password, setPassword] = useState('pass246')
+  //const [userId, setUserId] = useState(authUserId ? authUserId : 'zoshikanlu')
+  //const [password, setPassword] = useState('pass246')
+
+  const [userId, setUserId] = useState(authUserId)
+  const [password, setPassword] = useState('')
 
   const canSubmit = Boolean(userId) && Boolean(password)
 
