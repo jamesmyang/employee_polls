@@ -16,6 +16,7 @@ export const LeaderBoardPage = () => {
   const renderedTableRow = allUsers.map(user => (
     <tr key={user.id}>
       <td className='leaderboard-table-data'>
+        <img className="user-img" src={user.avatarURL} alt={user.name} />
         <div className='leaderboard-table-data-name' data-testid="author_name">{user.name}</div>
         <div className='leaderboard-table-data-id' data-testid="author_id">{user.id}</div>
       </td>

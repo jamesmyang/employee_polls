@@ -349,3 +349,39 @@ section {
 .leaderboard-table-width_50 {
   width: 58%;
 }
+
+.auth {
+  font-weight: 700;
+  padding: 0rem 0rem;
+  border-radius: 4px;
+  color: white !important;
+
+}
+
+.auth-out {
+  cursor: pointer;
+  margin-left: 20px;
+
+}
+
+.auth-img {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.user-img {
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.ques-img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+
+}

@@ -2,11 +2,12 @@ import React, { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-import { logout } from '../features/users/usersSlice'
+import { logout, selectUserById } from '../features/users/usersSlice'
 
 export const Navbar = () => {
 
   const authUserId = useSelector(state => state.users.auth.userId)
+  const user = useSelector(state => selectUserById(state, authUserId))
 
   const dispatch = useDispatch()
 
@@ -27,8 +28,9 @@ export const Navbar = () => {
           </div>
 
           <div className="navLinks">
-            <Link to="/" >{authUserId}</Link>
-            <Link to="/" onClick={logOut}>Logout</Link>
+            <div className="auth"><img className="auth-img" src={user.avatarURL} alt={authUserId} /></div>
+            <div className="auth">{authUserId}</div>
+            <div className="auth auth-out" onClick={logOut}>Logout</div>
           </div>
         </div>
       </section>

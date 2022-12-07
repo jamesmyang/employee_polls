@@ -59,7 +59,7 @@ export const SingleQuestionPage = ({ match }) => {
     <div className="questions-container">
       <div className="question-panel">
         <div className="question-author">Poll by {question.author}</div>
-        <img src={authorUser.avatarURL} alt={authorUser.avatarURL} />
+        <img className="ques-img" src={authorUser.avatarURL} alt={authorUser.avatarURL} />
         <div className="question-head">Would You Rather</div>
         <div className="answers-list">
           <OptionExcerpt optionText={question.optionOne.text} option={"optionOne"} />
