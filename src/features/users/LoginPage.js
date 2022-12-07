@@ -13,7 +13,7 @@ export const LoginPage = () => {
   //const [userId, setUserId] = useState(authUserId ? authUserId : 'zoshikanlu')
   //const [password, setPassword] = useState('pass246')
 
-  const [userId, setUserId] = useState(authUserId)
+  const [userId, setUserId] = useState(authUserId ? authUserId : '')
   const [password, setPassword] = useState('')
 
   const canSubmit = Boolean(userId) && Boolean(password)
@@ -37,14 +37,20 @@ export const LoginPage = () => {
     if (canSubmit) {
       dispatch(login({ userId, password }))
 
-      //setUserId('')
+      setUserId('')
       setPassword('')
     }
   }
 
-  const renderedError = () => (
-    <div>{error ? error : ""}</div>
-  )
+  const renderedError = () => {
+    if (error) {
+      return <div data-testid="error-header"> {error} </div>
+    }
+
+    if (!error) {
+      return <div data-testid="success-header"></div >
+    }
+  }
 
   const renderedUserIds = userIds.map(userId => (
     <option key={userId} value={userId}> {userId} </option>
@@ -62,6 +68,7 @@ export const LoginPage = () => {
           name="userId"
           value={userId}
           onChange={onUserIdChanged}
+          data-testid='name-select'
         >
           <option value="" ></option>
           {renderedUserIds}
@@ -74,6 +81,7 @@ export const LoginPage = () => {
           name="password"
           value={password}
           onChange={onPasswordChanged}
+          data-testid='password-input'
         />
 
         <button

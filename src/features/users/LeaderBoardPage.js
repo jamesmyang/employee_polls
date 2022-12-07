@@ -16,14 +16,14 @@ export const LeaderBoardPage = () => {
   const renderedTableRow = allUsers.map(user => (
     <tr key={user.id}>
       <td className='leaderboard-table-data'>
-        <div className='leaderboard-table-data-name'>{user.name}</div>
-        <div className='leaderboard-table-data-id'>{user.id}</div>
+        <div className='leaderboard-table-data-name' data-testid="author_name">{user.name}</div>
+        <div className='leaderboard-table-data-id' data-testid="author_id">{user.id}</div>
       </td>
       <td className='leaderboard-table-data'>
-        <div className='leaderboard-table-data-number'>{Object.values(user.answers).length}</div>
+        <div className='leaderboard-table-data-number' data-testid="author_answered">{Object.values(user.answers).length}</div>
       </td>
       <td className='leaderboard-table-data'>
-        <div className='leaderboard-table-data-number'>{user.questions.length}</div>
+        <div className='leaderboard-table-data-number' data-testid="author_question">{user.questions.length}</div>
       </td>
     </tr>
   ))
