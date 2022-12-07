@@ -1,7 +1,17 @@
 import { createSlice, createAsyncThunk, createEntityAdapter } from '@reduxjs/toolkit'
 import { _getUsers } from '../../api/_DATA'
 
-const usersAdapter = createEntityAdapter()
+const compareUsers = (a, b) => {
+  if (Object.keys(b.answers).length !== Object.keys(a.answers).length) {
+    return Object.keys(b.answers).length - Object.keys(a.answers).length
+  }
+
+  return b.questions.length - a.questions.length
+}
+
+const usersAdapter = createEntityAdapter({
+  sortComparer: compareUsers
+})
 
 const initialState = usersAdapter.getInitialState({
   auth: {

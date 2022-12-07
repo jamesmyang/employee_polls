@@ -32,14 +32,14 @@ describe('LeaderBoardPage', () => {
     expect(autherAnswereds[0].innerHTML).toEqual('4')
     expect(autherQuestions[0].innerHTML).toEqual('2')
 
-    expect(autherNames[1].innerHTML).toEqual('Tyler McGinnis')
-    expect(autherIds[1].innerHTML).toEqual('tylermcginnis')
-    expect(autherAnswereds[1].innerHTML).toEqual('2')
+    expect(autherNames[1].innerHTML).toEqual('Mike Tsamis')
+    expect(autherIds[1].innerHTML).toEqual('mtsamis')
+    expect(autherAnswereds[1].innerHTML).toEqual('3')
     expect(autherQuestions[1].innerHTML).toEqual('2')
 
-    expect(autherNames[2].innerHTML).toEqual('Mike Tsamis')
-    expect(autherIds[2].innerHTML).toEqual('mtsamis')
-    expect(autherAnswereds[2].innerHTML).toEqual('3')
+    expect(autherNames[2].innerHTML).toEqual('Tyler McGinnis')
+    expect(autherIds[2].innerHTML).toEqual('tylermcginnis')
+    expect(autherAnswereds[2].innerHTML).toEqual('2')
     expect(autherQuestions[2].innerHTML).toEqual('2')
 
     expect(autherNames[3].innerHTML).toEqual('Zenobia Oshikanlu')
