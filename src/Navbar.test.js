@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router'
 import { Navbar } from './app/Navbar';
 import configureStore from 'redux-mock-store';
+//npm install redux-mock-store --save-dev
 
 const mockStore = configureStore()
 
@@ -57,7 +58,6 @@ describe('Navbar', () => {
 
     var logoutLink = component.getByText('Logout')
     expect(logoutLink).toBeInTheDocument();
-
   })
 
 })
