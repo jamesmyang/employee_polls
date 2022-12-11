@@ -16,7 +16,9 @@ Object {
         <h4>
           Log in
         </h4>
-        <div />
+        <div
+          data-testid="success-header"
+        />
         <form>
           <label
             for="userId"
@@ -24,6 +26,7 @@ Object {
             User
           </label>
           <select
+            data-testid="name-select"
             id="userId"
             name="userId"
           >
@@ -37,6 +40,7 @@ Object {
             Password
           </label>
           <input
+            data-testid="password-input"
             id="password"
             name="password"
             type="password"
@@ -64,7 +68,9 @@ Object {
       <h4>
         Log in
       </h4>
-      <div />
+      <div
+        data-testid="success-header"
+      />
       <form>
         <label
           for="userId"
@@ -72,6 +78,7 @@ Object {
           User
         </label>
         <select
+          data-testid="name-select"
           id="userId"
           name="userId"
         >
@@ -85,6 +92,7 @@ Object {
           Password
         </label>
         <input
+          data-testid="password-input"
           id="password"
           name="password"
           type="password"
